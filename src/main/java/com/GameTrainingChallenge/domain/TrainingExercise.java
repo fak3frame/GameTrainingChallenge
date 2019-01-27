@@ -70,4 +70,9 @@ public class TrainingExercise {
                 rewardInPoints == that.rewardInPoints &&
                 Objects.equals(nameOfExercise, that.nameOfExercise);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nameOfExercise, numberOfRepetitions, rewardInPoints);
+    }
 }
