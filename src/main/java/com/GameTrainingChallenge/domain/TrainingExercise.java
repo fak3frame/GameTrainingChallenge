@@ -1,5 +1,7 @@
 package com.GameTrainingChallenge.domain;
 
+import java.util.Objects;
+
 public class TrainingExercise {
 
     private int id;
@@ -55,5 +57,17 @@ public class TrainingExercise {
 
     public void setRewardInPoints(int rewardInPoints) {
         this.rewardInPoints = rewardInPoints;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingExercise that = (TrainingExercise) o;
+        return id == that.id &&
+                numberOfRepetitions == that.numberOfRepetitions &&
+                rewardInPoints == that.rewardInPoints &&
+                Objects.equals(nameOfExercise, that.nameOfExercise);
     }
 }
