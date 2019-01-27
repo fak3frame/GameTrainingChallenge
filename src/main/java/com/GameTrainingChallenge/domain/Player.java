@@ -32,4 +32,53 @@ public class Player {
         this.age = player.age;
         this.trainingExercise = player.trainingExercise;
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public TrainingExercise getTrainingExercise() {
+        return trainingExercise;
+    }
+
+    public void setTrainingExercise(TrainingExercise trainingExercise) {
+        this.trainingExercise = trainingExercise;
+    }
 }
