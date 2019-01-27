@@ -75,4 +75,15 @@ public class TrainingExercise {
     public int hashCode() {
         return Objects.hash(id, nameOfExercise, numberOfRepetitions, rewardInPoints);
     }
+
+
+    @Override
+    public String toString() {
+        return "TrainingExercise{" +
+                "id=" + id +
+                ", nameOfExercise='" + nameOfExercise + '\'' +
+                ", numberOfRepetitions=" + numberOfRepetitions +
+                ", rewardInPoints=" + rewardInPoints +
+                '}';
+    }
 }
