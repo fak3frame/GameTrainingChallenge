@@ -11,4 +11,6 @@ public class Player {
     private int points;
 
     private String nickName;
+
+    private TrainingExercise trainingExercise;
 }
