@@ -102,4 +102,17 @@ public class Player {
     public int hashCode() {
         return Objects.hash(id, age, playerName, points, nickName, trainingExercise);
     }
+
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", age=" + age +
+                ", playerName='" + playerName + '\'' +
+                ", points=" + points +
+                ", nickName='" + nickName + '\'' +
+                ", trainingExercise=" + trainingExercise +
+                '}';
+    }
 }
