@@ -23,4 +23,37 @@ public class TrainingExercise {
         this.numberOfRepetitions = numberOfRepetitions;
         this.rewardInPoints = rewardInPoints;
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNameOfExercise() {
+        return nameOfExercise;
+    }
+
+    public void setNameOfExercise(String nameOfExercise) {
+        this.nameOfExercise = nameOfExercise;
+    }
+
+    public int getNumberOfRepetitions() {
+        return numberOfRepetitions;
+    }
+
+    public void setNumberOfRepetitions(int numberOfRepetitions) {
+        this.numberOfRepetitions = numberOfRepetitions;
+    }
+
+    public int getRewardInPoints() {
+        return rewardInPoints;
+    }
+
+    public void setRewardInPoints(int rewardInPoints) {
+        this.rewardInPoints = rewardInPoints;
+    }
 }
