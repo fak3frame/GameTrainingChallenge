@@ -4,6 +4,9 @@ import com.GameTrainingChallenge.domain.TrainingExercise;
 import com.GameTrainingChallenge.utils.GenerateNewId;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +15,13 @@ import java.util.Map;
 public class ExerciseRepository implements ExerciseInterface{
 
     //local database using map
-    Map<Integer, TrainingExercise> exercises = new HashMap<>();
+//    Map<Integer, TrainingExercise> exercises = new HashMap<>();
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
+    @Transactional
     public void createExercise(TrainingExercise trainingExercise) {
         //method put exercise in database
 
@@ -22,12 +29,15 @@ public class ExerciseRepository implements ExerciseInterface{
         //method for create testing player in database with exercise sent by Starter class
 
         //local database using map
-        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+//        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+//
+//        exercises.put(newId, trainingExercise);
 
-        exercises.put(newId, trainingExercise);
+        entityManager.persist(trainingExercise);
     }
 
     @Override
+    @Transactional
     public void createExercise(String nameOfExercise, int numberOfRepetitions, int rewardInPoints) {
         //method put exercise in database
 
@@ -36,11 +46,13 @@ public class ExerciseRepository implements ExerciseInterface{
         TrainingExercise newExercise = new TrainingExercise(nameOfExercise, numberOfRepetitions, rewardInPoints);
 
         //local database using map
-        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+//        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+//
+//        newExercise.setId(newId);
+//
+//        exercises.put(newId, newExercise);
 
-        newExercise.setId(newId);
-
-        exercises.put(newId, newExercise);
+        entityManager.persist(newExercise);
     }
 
     @Override
@@ -51,7 +63,9 @@ public class ExerciseRepository implements ExerciseInterface{
         //method for manual set exercise to player by user on web page
 
         //local database using map
-        return exercises.values();
+//        return exercises.values();
+
+        return entityManager.createQuery("from TrainingExercise", TrainingExercise.class).getResultList();
     }
 
     @Override
@@ -62,6 +76,8 @@ public class ExerciseRepository implements ExerciseInterface{
         // on web page
 
         //local database using map
-        return exercises.get(id);
+//        return exercises.get(id);
+
+        return entityManager.find(TrainingExercise.class, id);
     }
 }
