@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Player - Detail page</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstarp/4.1.3/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td><b>Player name</b></td>
+            <td><b>Age</b></td>
+            <td><b>Points</b></td>
+            <td><b>Exercise</b></td>
+            <td><b>Id</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <!--one objects is send and dilsplay in one row all details-->
+            <td th:text="${player.playerName}"/>
+            <!--additional new column with his age-->
+            <td th:text="${player.age}"/>
+            <td th:text="${player.points}"/>
+            <td>
+                <!--if player exercise = null -->
+                <span th:if="${player.trainingExercise==null}">
+                        Player has no exercise
+                    </span>
+                <!--else show his exercise-->
+                <span th:if="${player.trainingExercise!=null}">
+                        <a th:text="${player.trainingExercise.nameOfExercise}"/>
+                    </span>
+            </td>
+            <!--additional new column with his id-->
+            <td th:text="${player.id}"/>
+        </tr>
+        </tbody>
+    </table>
+    <!--after table, return button to main page-->
+    <div class="row">
+        <a th:href="${'/players'}">Back to main page</a>
+    </div>
+</div>
+</body>
