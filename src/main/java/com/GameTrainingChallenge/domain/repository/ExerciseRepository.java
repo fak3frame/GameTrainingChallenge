@@ -45,7 +45,13 @@ public class ExerciseRepository implements ExerciseInterface{
 
     @Override
     public Collection<TrainingExercise> returnExercises() {
-        return null;
+        //method returns all exercises
+
+        //method for set random exercise to selected player by user on web page
+        //method for manual set exercise to player by user on web page
+
+        //local database using map
+        return exercises.values();
     }
 
     @Override
