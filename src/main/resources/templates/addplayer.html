@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add player page</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstarp/4.1.3/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <!--first method in controller sending emty object of player-->
+    <form class="form-horizontal" th:object="${player}" th:action="@{/readyplayer}" th:method="post">
+        <!--th:object - empty sent object "player"-->
+        <!--th:action - address capture by second method in players controller capturing ready player object
+            in controller called value-->
+
+        <!--first form - name-->
+        <div class="form-group">
+            <label class="control-label">Enter the player's name (3-10 chars)</label>
+            <input type="text" class="form-control" th:field="*{playerName}"/>
+            <!--refer to players name field in his object-->
+            <!--*necessary setter in player class-->
+
+            <!--if typed name has errors (declared in player page - after use submit button) the information is
+                send by BindingResult object and controller send message error (declared in player class)
+                which is displayed in same page before form-->
+            <a th:if="${#fields.hasErrors('playerName')}" th:errors="*{playerName}"/>
+            <!--*player class declares that player's name cant be null-->
+            <!--@NotNull-->
+            <!--and it must have 3 - 10 chars-->
+            <!--@Size(min = 3, max = 10, message = "Available length of the name: 3-10 char.")-->
+        </div>
+
+        <!--second form - age-->
+        <div class="form-group">
+            <label class="control-label">Enter the player's age (18-55 age range)</label>
+            <input type="number" class="form-control" th:field="*{age}"/>
+            <a th:if="${#fields.hasErrors('age')}" th:errors="*{age}"/>
+        </div>
+
+        <!--button to submit in next div-->
+        <div class="row">
+            <button type="submit" class="btn btn-default">Add player</button>
+        </div>
+    </form>
+</div>
+</body>
