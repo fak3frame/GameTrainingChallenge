@@ -30,4 +30,18 @@ public class PlayerController {
         //retrun logic name of html file
         //handler mapping of link
     }
+
+    @RequestMapping("/addplayer")
+    //player adding page link
+    public String addPlayer(Model model){
+        Player player = new Player();
+        //add new empty object of player
+
+        model.addAttribute("player", player);
+        //add to model empty object of player
+
+        return "addplayer";
+        //return logic name of html file
+        //handler mapping of link
+    }
 }
