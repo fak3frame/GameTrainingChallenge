@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Players - Main page</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstarp/4.1.3/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <b>Time : <span th:text="${time.currentTime}"/></b>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td><b>Player name</b></td>
+            <td><b>Points</b></td>
+            <td><b>Exercise</b></td>
+            <td><b>Number of repetitions</b></td>
+            <td><b>Reward in points</b></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td><b></b></td>
+        </tr>
+        </thead>
+        <tbody th:each="x : ${players}">
+        <!--sendig list of players "players", iterating : x-->
+        <!--each row is for each player-->
+        <tr>
+            <td th:text="${x.playerName}"/>
+            <!--gets value (Player name) of player object using geter in Player class-->
+
+            <td th:text="${x.points}"/>
+
+            <td>
+                    <span th:if="${x.trainingExercise==null}">No exercise
+                        <!--if iterating object has null in exercise then add link to setting exercise
+                             page or random asign exercise-->
+                        <a th:href="${'/assignexercisetoplayer/id='+x.id}"><br>Manual assign exercise</a>
+                        <!--cresting link with value of players id (variable in path)-->
+                        <!--using getter in player class-->
+
+                        <!--link to manual assign exercise to player-->
+                        <a th:href="${'/setrandomexercise/id='+x.id}"><br>Random assign exercise</a>
+                        <!--link to random assign exercise to player controller-->
+                    </span>
+
+                <span th:if="${x.trainingExercise!=null}">
+                    <!--in the same column-->
+                    <!--if value of exercise is set then show if-->
+                        <a th:text="${x.trainingExercise.nameOfExercise}"/>
+                    <!--using getter in player and exercise class-->
+                </span>
+            </td>
+
+            <td>
+                <!--in next column if exercise of player isnt null then shows number of repetitions of exercise-->
+                <span th:if="${x.trainingExercise!=null}">
+                    <a th:text="${x.trainingExercise.numberOfRepetitions}"/>
+                </span>
+            </td>
+
+            <td>
+                <!--in next column if exercise of player isnt null then shows reward in points of exercise-->
+                <span th:if="${x.trainingExercise!=null}">
+                    <a th:text="${x.trainingExercise.rewardInPoints}"/>
+                </span>
+            </td>
+
+            <td>
+                <!--in next column if exercise of player isnt null shows link to finish exercise controller-->
+                <span th:if="${x.trainingExercise!=null}">
+                    <a th:href="${'/completeexercise/id='+x.id}">Complete exercise</a>
+                </span>
+            </td>
+
+            <td>
+                <!--in next column link to player details page-->
+                <a th:href="${'/player/id='+x.id}">Show player details</a>
+            </td>
+
+            <td>
+                <!--in next column link controller deleting player-->
+                <a th:href="${'/player/delete/id='+x.id}">Delete player</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <!--under table link to creating player page-->
+        <a th:href="${'/addplayer'}">Add new player</a>
+    </div>
+
+    <div class="row">
+        <!--button to logout (spring security)-->
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
+    </div>
+
+</div>
+</body>
