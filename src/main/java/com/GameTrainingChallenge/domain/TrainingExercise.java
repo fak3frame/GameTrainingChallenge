@@ -1,9 +1,15 @@
 package com.GameTrainingChallenge.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "TrainingExercises")
+@TableGenerator(name="sequenceOfExercises", initialValue=0, allocationSize=50)
 public class TrainingExercise {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "sequenceOfExercises")
     private int id;
 
     private String nameOfExercise;
