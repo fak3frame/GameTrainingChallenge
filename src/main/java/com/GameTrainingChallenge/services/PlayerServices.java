@@ -59,4 +59,18 @@ public class PlayerServices {
 
         playerRepository.updatePlayer(player);
     }
+
+    public void completeExercise(Player player){
+        //method gets points of exercise of player and add them to points of player
+        // then set exercise player to null and send modified object of player
+        //method using injected playerRepository object
+        //user chooses on web page player who finish exercise
+        //method of player repository update player in database
+
+        Integer points = player.getTrainingExercise().getRewardInPoints();
+        player.setTrainingExercise(null);
+        player.setPoints(player.getPoints()+points);
+
+        playerRepository.updatePlayer(player);
+    }
 }
