@@ -45,7 +45,10 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public void deletePlayer(Integer id) {
+        //method deletes player by user (select id on web page)
 
+        //local database using map
+        players.remove(id);
     }
 
     @Override
