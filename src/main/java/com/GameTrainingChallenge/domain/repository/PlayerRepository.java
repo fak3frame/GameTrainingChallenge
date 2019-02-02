@@ -87,6 +87,14 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public void updatePlayer(Player player) {
+        //method overwrites player in database
 
+        //method for manual assign exercise to player by user on web page
+
+        //logic of assign in service of exercise
+
+        //local database using map
+        Integer id = player.getId();
+        players.put(id, player);
     }
 }
