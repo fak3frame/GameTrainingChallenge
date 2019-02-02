@@ -4,10 +4,16 @@ import com.GameTrainingChallenge.domain.Player;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
 public class PlayerRepository implements PlayerInterface{
+
+    //to tests using map as database
+    Map<Integer, Player> players = new HashMap<>();
+
     @Override
     public void createPlayer(String playerName, int age) {
 
