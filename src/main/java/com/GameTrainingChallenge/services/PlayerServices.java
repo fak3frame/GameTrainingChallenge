@@ -29,4 +29,14 @@ public class PlayerServices {
 
         playerRepository.createPlayer(player);
     }
+
+    public Player returnPlayerById(Integer id){
+        //method forward sent id from player controller to repository method to return object
+        // of player by id
+        //method using injected playerRepository object
+        //method of repository returns object of player by id from database to display details
+        // of player on web page
+
+        return playerRepository.returnPlayerById(id);
+    }
 }
