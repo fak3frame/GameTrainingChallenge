@@ -1,6 +1,7 @@
 package com.GameTrainingChallenge.domain.repository;
 
 import com.GameTrainingChallenge.domain.TrainingExercise;
+import com.GameTrainingChallenge.utils.GenerateNewId;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -15,7 +16,15 @@ public class ExerciseRepository implements ExerciseInterface{
 
     @Override
     public void createExercise(TrainingExercise trainingExercise) {
+        //method put exercise in database
 
+        //method for put exercise into database sent by Sterter class
+        //method for create testing player in database with exercise sent by Starter class
+
+        //local database using map
+        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+
+        exercises.put(newId, trainingExercise);
     }
 
     @Override
