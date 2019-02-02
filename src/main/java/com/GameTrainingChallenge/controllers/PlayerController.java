@@ -97,4 +97,21 @@ public class PlayerController {
         return "playerdetail";
         //new info page of single player
     }
+
+    @RequestMapping("/player/delete/id={id}")
+    //deleting player request
+    //handler mapping using with PATH generated in frontend
+    //user select player who wants to delete
+    public String deletePlayer(@PathVariable("id")Integer id){
+        //again capture variable in path
+        //new web page is not handled so model is not needed
+
+        playerServices.deletePlayer(id);
+        //delete player from database using service/repo method by id
+
+        return "redirect:/players";
+        //deleting player is on main page
+        //after delete page is again displayed using main page mapping method
+        // without deleted player
+    }
 }
