@@ -49,4 +49,14 @@ public class PlayerServices {
 
         playerRepository.deletePlayer(id);
     }
+
+    public void updatePlayer(Player player){
+        //method forward object of player from player controller to repository method
+        //method using injected playerRepository object
+        //method for manual assign exercise to player by user on web page
+        //user assigning exercise to player sends object of player with set exercise
+        //method of repository update object of player in database
+
+        playerRepository.updatePlayer(player);
+    }
 }
