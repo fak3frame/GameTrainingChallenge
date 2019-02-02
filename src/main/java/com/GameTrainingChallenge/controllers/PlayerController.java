@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -72,5 +73,28 @@ public class PlayerController {
             return "redirect:/players";
             //redirect to main page
         }
+    }
+
+    @RequestMapping("/player/id={id}")
+    //players details page
+    //handler mapping using with PATH generated in frontend
+    //user select player who wants to see details
+    //each player has unique id so each generated address contains id of player
+    // in {} in path like "player/id=1"
+    //generated path has variable called "id"
+    public String returnPlayer(@PathVariable("id")Integer id, Model model){
+        //capture variable in path using annotation @PathVariable and assign to
+        // correct type of new variable
+        //my captured variable is called in path "id" and method "id"
+
+        Player player = playerServices.returnPlayerById(id);
+        //capture object of player with correct id using method of service/repo
+        // and assign to new object od player
+
+        model.addAttribute("player", player);
+        //send object to frontend
+
+        return "playerdetail";
+        //new info page of single player
     }
 }
