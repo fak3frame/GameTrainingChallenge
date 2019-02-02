@@ -29,7 +29,18 @@ public class ExerciseRepository implements ExerciseInterface{
 
     @Override
     public void createExercise(String nameOfExercise, int numberOfRepetitions, int rewardInPoints) {
+        //method put exercise in database
 
+        //method for put exercise into database sent by Starter class
+
+        TrainingExercise newExercise = new TrainingExercise(nameOfExercise, numberOfRepetitions, rewardInPoints);
+
+        //local database using map
+        Integer newId = GenerateNewId.createNewId(exercises.keySet());
+
+        newExercise.setId(newId);
+
+        exercises.put(newId, newExercise);
     }
 
     @Override
