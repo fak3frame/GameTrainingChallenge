@@ -6,6 +6,7 @@ import com.GameTrainingChallenge.domain.repository.PlayerInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,6 +22,7 @@ public class ExerciseServices {
 
     final static Random rand = new Random();
 
+    @Transactional
     public void assignRandomExercise(String nickName){
         //method sets random exercise to selected player
         //user select player on web page and controller sends nickname of this player
