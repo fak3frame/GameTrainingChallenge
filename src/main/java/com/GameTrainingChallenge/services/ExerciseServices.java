@@ -37,4 +37,11 @@ public class ExerciseServices {
 
         playerRepository.returnPlayerByName(nickName).ifPresent(x -> x.setTrainingExercise(trainingExercise));
     }
+
+    public List<TrainingExercise> returnExercises(){
+        //method return list of all exercises
+        //method for manual set exercise to player by user on web page
+
+        return new ArrayList<>(exerciseRepository.returnExercises());
+    }
 }
