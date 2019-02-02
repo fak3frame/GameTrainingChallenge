@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -47,5 +48,19 @@ public class ExerciseController {
 
         return "assignplayer";
         //assign exercise to single player page
+    }
+
+    @RequestMapping(value = "/playerwithexercise", method = RequestMethod.POST)
+    //handler mapping of return player object with manual selected exercise by user on page
+    //works with mapping manual assignment of the exercise
+    public String assignExercise(Player player){
+        //recives player object with manual assigned exercise to player by user on web page
+        //new web page is not handled so model is not needed
+
+        playerServices.updatePlayer(player);
+        //sent object of player with assigned exercise is adding to database using service/repo method
+
+        return "redirect:/players";
+        //redirect to main page
     }
 }
