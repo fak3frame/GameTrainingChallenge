@@ -39,4 +39,14 @@ public class PlayerServices {
 
         return playerRepository.returnPlayerById(id);
     }
+
+    public void deletePlayer(Integer id){
+        //method forwards sent id from player controller to repository method
+        //method using injected playerRepository object
+        //method of repository remove player from database using sent id
+        //user selecting player to delete generate his id which is sent from controller
+        // of player to method of service
+
+        playerRepository.deletePlayer(id);
+    }
 }
