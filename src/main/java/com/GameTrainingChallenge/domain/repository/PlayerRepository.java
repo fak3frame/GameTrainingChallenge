@@ -53,7 +53,11 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public Player returnPlayerById(Integer id) {
-        return null;
+        //method returns player selected by user on web page to display
+        // details of the player on the next page
+
+        //local database using map
+        return players.get(id);
     }
 
     @Override
