@@ -20,5 +20,14 @@ public class Starter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        //----CREATING STARTING PLAYERS (for tests)
+        playerRepo.createPlayer("Kamil", 28);
+        playerRepo.createPlayer("Tomas", 30);
+
+
+        //----CREATING EXERCISES
+        exerciseRepo.createExercise("Push ups", 5, 10);
+        exerciseRepo.createExercise("Squat Jumps", 10, 5);
+
     }
 }
