@@ -63,4 +63,22 @@ public class ExerciseController {
         return "redirect:/players";
         //redirect to main page
     }
+
+    @RequestMapping(value = "/setrandomexercise/id={id}")
+    //random assign exercise to player
+    //handler mapping using with PATH generated in frontend using unique id of player
+    //user chooses which player he wants to assign exercise on main page
+    public String assignRandomExercise(@PathVariable("id")Integer id){
+        //again capture variable in path
+        //new web page is not handled so model is not needed
+
+        Player player = playerServices.returnPlayerById(id);
+        //create player and assign to selected player by id from database
+
+        exerciseServices.assignRandomExercise(player.getPlayerName());
+        //choice player by user on page and sent his name to service to assign random exercise
+
+        return "redirect:/players";
+        //redirect to main page
+    }
 }
