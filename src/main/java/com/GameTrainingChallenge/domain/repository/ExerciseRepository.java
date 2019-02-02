@@ -56,6 +56,12 @@ public class ExerciseRepository implements ExerciseInterface{
 
     @Override
     public TrainingExercise returnExercise(Integer id) {
-        return null;
+        //method return exercise by sent id
+
+        //method used in parsing id of exercise to object of exercise when user manually set exercise to player
+        // on web page
+
+        //local database using map
+        return exercises.get(id);
     }
 }
