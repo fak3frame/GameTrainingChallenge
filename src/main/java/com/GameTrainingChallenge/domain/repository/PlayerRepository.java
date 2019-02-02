@@ -30,7 +30,17 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public void createPlayer(Player player) {
+        //method creates new players by user on web page
 
+        //controller->service sends object of player with variables set
+        // by user on web page in forms
+
+        Player newPlayer = new Player(player);
+
+        //local database using map
+        Integer newId = GenerateNewId.createNewId(players.keySet());
+        newPlayer.setId(newId);
+        players.put(newId, newPlayer);
     }
 
     @Override
