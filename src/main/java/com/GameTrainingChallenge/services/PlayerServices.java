@@ -21,4 +21,12 @@ public class PlayerServices {
 
         return new ArrayList<>(playerRepository.returnPlayers());
     }
+
+    public void createPlayer(Player player){
+        //method forwards object of player class from controller to repository
+        //method add object of player with set variables by user on web page to database
+        // using method of injected playerRepository object
+
+        playerRepository.createPlayer(player);
+    }
 }
