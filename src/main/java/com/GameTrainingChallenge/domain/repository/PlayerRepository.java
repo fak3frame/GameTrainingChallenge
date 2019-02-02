@@ -62,7 +62,17 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public Optional<Player> returnPlayerByName(String playerName) {
-        return Optional.empty();
+        //method returns Optional of player based on sent name of player
+
+        //method for assign random exercise to selected player by user on web
+        // page
+
+        //local database using map
+        Optional<Player> player = players.values().stream()
+                .filter(x -> x.getPlayerName().equals(playerName))
+                .findAny();
+
+        return player;
     }
 
     @Override
