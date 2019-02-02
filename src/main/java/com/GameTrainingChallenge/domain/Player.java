@@ -1,19 +1,39 @@
 package com.GameTrainingChallenge.domain;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Players")
+@TableGenerator(name = "sequenceOfPlayers", initialValue = 0, allocationSize = 50)
 public class Player {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "sequenceOfPlayers")
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotNull
+    @Range(min = 18, max = 55, message = "Available age range: 18-55")
     private int age;
 
+    @NotNull
+    @Size(min = 3, max = 10, message = "Available length of the name: 3-10 char.")
+    @Column(name = "Player_Name")
     private String playerName;
 
     private int points;
 
+    @Transient//variable invisible for hibernate
     private String nickName;
 
+    @OneToOne
+    //object variable type of another table
+    //foreign key
     private TrainingExercise trainingExercise;
 
 
