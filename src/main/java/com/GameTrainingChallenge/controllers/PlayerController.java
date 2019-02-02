@@ -1,5 +1,6 @@
 package com.GameTrainingChallenge.controllers;
 
+import com.GameTrainingChallenge.components.Time;
 import com.GameTrainingChallenge.domain.Player;
 import com.GameTrainingChallenge.services.PlayerServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class PlayerController {
     @Autowired
     PlayerServices playerServices;
 
+    @Autowired
+    Time time;
+
     @RequestMapping("/players")
     //main page link
     public String retrnPlayers(Model model){
@@ -29,6 +33,9 @@ public class PlayerController {
 
         model.addAttribute("players", players);
         //add to model all list of players - object called "players" in frontend
+
+        model.addAttribute("time", time);
+        //add to model my injected component - current time object
 
         return "players";
         //retrun logic name of html file
