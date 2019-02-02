@@ -81,4 +81,22 @@ public class ExerciseController {
         return "redirect:/players";
         //redirect to main page
     }
+
+    @RequestMapping(value = "/completeexercise/id={id}")
+    //handler mapping using with PATH generated in frontend using unique id of player
+    //user chooses which player he wants to finish exercise on main page
+    public String completeExercise(@PathVariable("id")Integer id){
+        //again capture variable in path
+        //new web page is not handled so model is not needed
+
+        Player player = playerServices.returnPlayerById(id);
+        //create player and assign to selected player by id from database
+
+        playerServices.completeExercise(player);
+        //choice player by user on page and sent his object to service to complete exercise
+        //method in service add points of exercise and set exercise of player to null
+
+        return "redirect:/players";
+        //redirect to main page
+    }
 }
