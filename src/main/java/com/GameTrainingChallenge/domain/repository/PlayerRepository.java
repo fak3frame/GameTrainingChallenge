@@ -1,6 +1,7 @@
 package com.GameTrainingChallenge.domain.repository;
 
 import com.GameTrainingChallenge.domain.Player;
+import com.GameTrainingChallenge.utils.GenerateNewId;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -15,8 +16,16 @@ public class PlayerRepository implements PlayerInterface{
     Map<Integer, Player> players = new HashMap<>();
 
     @Override
+    //method that operations will be using database
     public void createPlayer(String playerName, int age) {
+        //method creates new players by starter class
 
+        Player newPlayer = new Player(playerName, age);
+
+        //local database using map
+        Integer newId = GenerateNewId.createNewId(players.keySet());
+        newPlayer.setId(newId);
+        players.put(newId, newPlayer);
     }
 
     @Override
