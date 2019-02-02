@@ -77,7 +77,12 @@ public class PlayerRepository implements PlayerInterface{
 
     @Override
     public Collection<Player> returnPlayers() {
-        return null;
+        //method returns all players
+
+        //method for show all players from database on main page
+
+        //local database using map
+        return players.values();
     }
 
     @Override
