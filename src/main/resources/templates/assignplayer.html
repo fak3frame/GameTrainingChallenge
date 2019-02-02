@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manual assign exercise to player page</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstarp/4.1.3/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <b><a th:text="${'Player selected : '}"/></b>
+    <br><a th:text="${'Player name : '+player.playerName}"/>
+    <br><a th:text="${'Age : '+player.age}"/>
+    <br><a th:text="${'Id : '+player.id}"/>
+    <br><br>
+
+    <form class="form-horizontal" th:object="${player}" th:action="@{/playerwithexercise}" method="post">
+        <!--th:object - name of sent player object by first controller method-->
+        <!--th:acton - address to capture by second controller method after use submit button
+            (in controller select by "value" parameter-->
+
+        <!--by default, the object sent has cleared fields-->
+        <!--to prevent this we have to use type-hidden to selected fields-->
+        <input type="hidden" th:field="*{playerName}">
+        <input type="hidden" th:field="*{age}">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{points}">
+
+        <!--im using selection list of all exercise-->
+        <div class="form-group">
+            <label class="control-label">Choose exercise</label>
+
+            <!--select field which will be modified (i didn't mark this field as hidden-->
+            <select th:field="*{trainingExercise}">
+
+                <!--controller send object of player and list of all exercise-->
+                <!--th:each choose object to iterating - list of sent exercises
+                    in selection list-->
+                <!--th:value choose value of exercise object which will be assigned to exercise field
+                    of player - im using id of exercise (it is number but it is converting to String!)
+                    *!! i have to create formatter class to covert (parse) id (String now) of exercise
+                    to object of exercise!!-->
+                <!--th:text - displayed value to select-->
+                <option th:each="x : ${exercises}"
+                        th:value="${x.id}"
+                        th:text="${x.nameOfExercise}">
+                </option>
+            </select>
+        </div>
+
+        <!--submit button-->
+        <div class="row">
+            <button type="submit" class="btn btn-default">Assign exercise to player</button>
+        </div>
+    </form>
+</div>
+</body>
