@@ -46,12 +46,13 @@ Page on which you can see details of selected player
 ## Technologies
 * Java 8
 * Maven
-* Spring (Starter/Web/Security/Data)
+* Spring Boot/Starter/MVC/Data/Security
 * Hibernate
 * H2 Database
 * Jquery
 * Bootstrap
 * Thymeleaf
+* Gitflow
 
 ## Status
 Project is: _finished_
